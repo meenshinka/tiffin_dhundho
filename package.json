@@ -1,0 +1,16 @@
+{
+  "name": "tiffin_dhundo",
+  "version": "1.0.0",
+  "description": "It is a website where needy one can find tiffin services near them.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Meenakshi Shukla",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "npm-git-install": "^0.3.0"
+  }
+}
