@@ -1,12 +1,15 @@
 const express=require('express')
 const Router = express.Router();
 
+
 const Home = require('../controllers/Home.js')
-const Signup = require('../controllers/Signup.js')
-const Login = require('../controllers/Login.js')
+
+const {buyerLogin,sellerLogin,buyerSignup,sellerSignup} = require('../controllers/Credentials.js')
 
 Router.get('/Home' , Home);
-Router.get('/Login' , Login);
-Router.get('/Signup' , Signup);
+Router.post('/buyerLogin' , buyerLogin);
+Router.post('/sellerLogin' , sellerLogin);
+Router.post('/buyerSignup' , buyerSignup);
+Router.post('/sellerSignup' ,sellerSignup);
 
 module.exports = Router;
