@@ -1,6 +1,8 @@
 const express = require("express");
+const emailvalidator = require("email-validator");
 const buser = require("../Models/tiffinbuyer.js");
 const Suser = require('../Models/sellerschema.js');
+const sellerschema = require("../Models/sellerschema.js");
 const app = express();
 
 app.use(express.json());
@@ -15,7 +17,11 @@ const buyerSignup = async (req,res,next)=>{
         else if(password != cpassword){
           res.send("Password does'nt match!")
         }
-   
+
+        else if(!emailvalidator.validate(req.body.email) ){
+          res.status(400).send('Enter a Valid Email Address');
+      }
+
         const userExist=await buser.findOne({email});
         if(userExist){
          res.send("User already exist")
@@ -45,6 +51,9 @@ const buyerSignup = async (req,res,next)=>{
        else if(password != cpassword){
         res.send("Password does'nt match!")
       }
+      else if(!emailvalidator.validate(req.body.email) ){
+        res.status(400).send('Enter a Valid Email Address');
+      }
   
        const usersExist= await Suser.findOne({email,password});
        if(usersExist){
@@ -65,7 +74,7 @@ const buyerSignup = async (req,res,next)=>{
    
 
 const buyerLogin = async (req, res, next) => {
-  const { email, password } = req.body;
+  var { email, password } = req.body;
   const userExist = await buser.findOne({ email });
   // console.log(userExist);
   try {
