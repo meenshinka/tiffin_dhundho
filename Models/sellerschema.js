@@ -35,9 +35,8 @@ const sellerSchema = new mongoose.Schema({
                 required:true},
 
     cpassword : { type : String,
-                  required:true},  
+                  required:true},
 })
 
 
-module.exports=new mongoose.model('sellerAuth',sellerSchema)
- ;
+module.exports=new mongoose.model('sellerAuth',sellerSchema);

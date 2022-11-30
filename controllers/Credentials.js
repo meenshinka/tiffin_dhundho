@@ -31,8 +31,6 @@ const buyerSignup = async (req,res,next)=>{
         if (registered) {
           res.status(201).json({ success: true });
         }
-      
-     
      }catch(err){
        console.log(err);
      }
@@ -50,6 +48,7 @@ const buyerSignup = async (req,res,next)=>{
        else if(password != cpassword){
         res.send("Password does'nt match!")
       }
+
       else if(!emailvalidator.validate(req.body.email) ){
         res.status(400).send('Enter a Valid Email Address');
       }
@@ -64,7 +63,6 @@ const buyerSignup = async (req,res,next)=>{
        if (registered) {
          res.status(201).json({ success: true });
        }
-     
     }catch(err){
       console.log(err);
     }
@@ -80,10 +78,12 @@ const buyerLogin = async (req, res, next) => {
     if (userExist) {
       if (userExist.password === password) {
         res.send("Login Successfull");
-      } else {
+      }
+       else {
         res.send("Invalid Credentials!");
       }
-    } else {
+    } 
+    else {
       res.send("Register yourself first!");
     }
   } catch (err) {
